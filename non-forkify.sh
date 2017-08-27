@@ -38,6 +38,10 @@ checkout_and_push_all_branches() {
 		new_branch=`echo ${branch#*"$REMOTE"/}`
 		checkout_branch="$REMOTE/$new_branch"
 
+		if [ "$new_branch" == "HEAD" ]; then
+			continue
+		fi
+
 		if [ $VERBOSE -eq 1 ]; then
 			echo "This branch will be checked out - $checkout_branch"
 			echo "This branch will be newly created - $new_branch"	
